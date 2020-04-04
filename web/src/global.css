@@ -9,7 +9,7 @@
 
 body {
 	font: 400 14px Roboto, sans-serif;
-	background: #EDEDED;
+	background:linear-gradient(#EB9667, #66DDE4);
 	-webkit-font-smoothing:antialiased;
 	
 }
@@ -27,6 +27,12 @@ input, button, textarea {
 	color:#363636;
 	border-radius:5px;
 	transition:filter 0.2s;
+	color:#fff;
+	font-size:20px;
+	font-weight:500;
+	letter-spacing:0.1em;
+	text-decoration:none;
+	text-transform:none;
 }
 
 .button:hover {
@@ -55,7 +61,8 @@ form input {
 	font-size:16px;
 	text-decoration: none;
 	font-weight:500;
-
+	text-decoration:none;
+	text-transform:none;
 	transition: opacity 0.2s;
 }
 

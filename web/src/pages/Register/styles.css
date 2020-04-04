@@ -43,6 +43,7 @@
 	max-width:500px;
 	padding:30px 54px ;
 	background: #FAFAFA;
+	border-radius:8px;
 
 	display:flex;
 	flex-direction:column;

@@ -11,13 +11,15 @@
 
 .logon-container img {
 	width:100%;
-	max-width:400px;
+	max-width:450px;
 	height:100%;
+	max-height:400px;
 }
 
 .logon-container section.form {
 	width:100%;
 	max-width:600px;
+
 
 	display:flex;
 	flex-direction:column;
@@ -41,6 +43,7 @@
 	max-width:500px;
 	padding:30px 54px ;
 	background: #FAFAFA;
+	border-radius:8px;
 
 	display:flex;
 	flex-direction:column;

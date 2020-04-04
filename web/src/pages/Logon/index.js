@@ -4,7 +4,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
 
-import taskImage from '../../assets/support-notes.svg';
+import taskImage from '../../assets/table-task.png';
 
 function Logon() {
 
