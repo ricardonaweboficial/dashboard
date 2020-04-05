@@ -10,7 +10,6 @@ module.exports = {
 
 	async store(req, res) {
 		const { name, surname, email, senha } = req.body;
-
 		const id = crypto.randomBytes(4).toString('HEX');
 
 		const response = await connection('users').insert({
@@ -19,9 +18,21 @@ module.exports = {
 			surname,
 			email,
 			senha
-		})
+		});
+
+		return res.json(response.data);
 		
-		return res.json(response);
+	},
+
+	async show(req, res) {
+		const { email } = req.body;
+
+		const user = await connection('users')
+			.where('email', email)
+			.select('email')
+			.first();
+
+		return res.json(user);
 	},
 
 	async update(req, res) {

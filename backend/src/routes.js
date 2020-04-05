@@ -15,6 +15,7 @@ routes.post('/session', SessionController.store);
 //Routes of Users 
 routes.get('/users', UsersController.index)
 routes.post('/users', UsersController.store);
+routes.post('/users_search', UsersController.show);
 routes.put('/users/:id', UsersController.update);
 routes.delete('/users/:id', UsersController.destroy);
 

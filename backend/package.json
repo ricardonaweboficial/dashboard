@@ -7,6 +7,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "date-fns": "^2.11.1",
     "express": "^4.17.1",
     "knex": "^0.20.13",
