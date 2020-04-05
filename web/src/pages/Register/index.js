@@ -45,61 +45,6 @@ function Register() {
 		return alert('Este email já esta em uso');
 
 
-		
-		
-
-
-		// if (response.status === 400) {
-		// 	alert('User created with success');
-		// } else {
-		// 	alert('error in register');
-		// }
-
-
-
-		// if(senha === replaceSenha) {
-		// 	const data = {
-		// 		name,
-		// 		surname,
-		// 		email,
-		// 		senha,
-		// 	}
-		// 	try {
-				
-
-		// 		if(response) {
-		// 			alert('foi');
-		// 		} 
-				
-		// 	} catch (err) {
-		// 		return alert('email já existe');
-		// 	}	
-		// }
-
-		// return alert('As senhas não estão identicas');
-
-		
-
-
-		// if(senha === replaceSenha) {
-		// 	const data = {
-		// 		name,
-		// 		surname,
-		// 		email,
-		// 		senha,
-		// 	}
-		// 	try {
-		// 		api.post('/users', data);
-
-		// 		history.push('/');
-		// 	} catch ( err ) {
-		// 		alert('Erro no cadastro tente novamente');
-		// 	}
-		// } 
-
-		// return alert('As senhas não estam exatamente iguais');
-	}
-
 	return (
 		<div className="register-container">
 			<section>
