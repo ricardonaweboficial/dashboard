@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -12,18 +12,92 @@ function Register() {
 	const [ surname, setSurname ] = useState('');
 	const [ email, setEmail ] = useState('');
 	const [ senha, setSenha ] = useState('');
-	const [ replaceSenha, setReplaceSenha ] = useState('')
+	const [ replaceSenha, setReplaceSenha ] = useState('');
 
-	function handleRegister(e) {
+	const history = useHistory();
+
+	async function handleRegister(e) {
 		e.preventDefault();
 
-		const data = {
-			name,
-			surname,
-			email,
-			senha,
-			replaceSenha
-		};
+		const response = await api.post('users_search', { email });
+
+		if(response.data.email !== email) {
+			if(senha === replaceSenha) {
+				const data = {
+					name,
+					surname,
+					email,
+					senha,
+				}
+
+				try {
+					api.post('/users', data);
+
+					return alert('Usuário cadastrado com sucesso');
+				} catch (err) {
+					return alert('erro no register')
+				}
+			}
+
+			return alert('As senhas não são idênticas');
+		}
+
+		return alert('Este email já esta em uso');
+
+
+		
+		
+
+
+		// if (response.status === 400) {
+		// 	alert('User created with success');
+		// } else {
+		// 	alert('error in register');
+		// }
+
+
+
+		// if(senha === replaceSenha) {
+		// 	const data = {
+		// 		name,
+		// 		surname,
+		// 		email,
+		// 		senha,
+		// 	}
+		// 	try {
+				
+
+		// 		if(response) {
+		// 			alert('foi');
+		// 		} 
+				
+		// 	} catch (err) {
+		// 		return alert('email já existe');
+		// 	}	
+		// }
+
+		// return alert('As senhas não estão identicas');
+
+		
+
+
+		// if(senha === replaceSenha) {
+		// 	const data = {
+		// 		name,
+		// 		surname,
+		// 		email,
+		// 		senha,
+		// 	}
+		// 	try {
+		// 		api.post('/users', data);
+
+		// 		history.push('/');
+		// 	} catch ( err ) {
+		// 		alert('Erro no cadastro tente novamente');
+		// 	}
+		// } 
+
+		// return alert('As senhas não estam exatamente iguais');
 	}
 
 	return (
