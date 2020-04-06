@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -11,15 +11,22 @@ function Logon() {
 	const [ email, setEmail ] = useState('');
 	const [ senha, setSenha ] = useState('');
 
+	const history = useHistory();
+
 	async function handleLogin(e) {
 		e.preventDefault();
 
 		try {
 			const response = await api.post('/session', { email, senha });
 
-			console.log(response.data.name, response.data.surname );
+			localStorage.setItem('user_id', response.data.id);
+			localStorage.setItem('user_name', response.data.name);
+			localStorage.setItem('user_surname', response.data.surname);
+
+			history.push('/profile')
+
 		} catch (err) {
-			alert('Falha no login tente novamente.');
+			alert('Este email não existe.');
 		}
 	}
 

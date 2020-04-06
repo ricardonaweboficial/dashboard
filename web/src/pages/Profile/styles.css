@@ -55,6 +55,7 @@
 .profile-container section {
 	display:flex;
 	margin-top: 100px;
+	justify-content:space-between;
 }
 
 .profile-container section .category h1{
@@ -98,6 +99,8 @@
 	padding:10px 24px;
 	border-radius:8px;
 	position:relative;
+	width:400px;
+
 }
 
 .tasks ul li p {

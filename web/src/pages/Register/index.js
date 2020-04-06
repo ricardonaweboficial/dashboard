@@ -7,7 +7,7 @@ import './styles.css';
 
 import notebookImage from '../../assets/support-notes.svg';
 
-function Register() {
+export default function Register() {
 	const [ name, setName ] = useState('');
 	const [ surname, setSurname ] = useState('');
 	const [ email, setEmail ] = useState('');
@@ -34,6 +34,8 @@ function Register() {
 					api.post('/users', data);
 
 					return alert('Usuário cadastrado com sucesso');
+
+					history.push('/');
 				} catch (err) {
 					return alert('erro no register')
 				}
@@ -43,6 +45,7 @@ function Register() {
 		}
 
 		return alert('Este email já esta em uso');
+	}
 
 
 	return (
@@ -93,5 +96,3 @@ function Register() {
 		</div>
 	);
 }
-
-export default Register;
