@@ -9,7 +9,7 @@ module.exports = {
 				'email': email,
 				'senha': senha,
 			})
-			.select('name', 'surname')
+			.select('name', 'surname', 'id')
 			.first();
 		if(!user) {
 			return res.status(400).json({ error: 'No this user exist' })
