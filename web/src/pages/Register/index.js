@@ -14,7 +14,7 @@ export default function Register() {
 	const [ senha, setSenha ] = useState('');
 	const [ replaceSenha, setReplaceSenha ] = useState('');
 
-	const history = useHistory();
+	let history = useHistory();
 
 	async function handleRegister(e) {
 		e.preventDefault();
@@ -33,7 +33,7 @@ export default function Register() {
 				try {
 					api.post('/users', data);
 
-					return alert('Usuário cadastrado com sucesso');
+					alert('Usuário cadastrado com sucesso');
 
 					history.push('/');
 				} catch (err) {
