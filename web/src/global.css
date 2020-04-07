@@ -9,7 +9,7 @@
 
 body {
 	font: 400 14px Roboto, sans-serif;
-	background:linear-gradient(#EB9667, #66DDE4);
+	background:#d1d1d1;/*background:linear-gradient(#EB9667, #66DDE4);*/
 	-webkit-font-smoothing:antialiased;
 	
 }
