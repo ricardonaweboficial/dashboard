@@ -3,8 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiChevronDown, FiTrash2, FiEdit, FiPower } from 'react-icons/fi';
 import api from '../../services/api';
 
-import logoImg from '../../assets/logo.svg';
-
 import './styles.css';
 
 export default function Profile() {
@@ -54,8 +52,9 @@ export default function Profile() {
 		// <span>Ver mais...</span>
 
 		<div className="profile-container">
+
 			<header>
-				<img src={logoImg} alt="logo-task"/>
+				<h2><span>Bem vindo,</span><br /> {user_name} {user_surname}</h2>
 				<input placeholder="Procure sua tarefa aqui pelo titulo..." />
 				<Link className="button" to="/profile/tasks/new">Cadastrar nova tarefa</Link>
 				<div className="user">
@@ -64,7 +63,7 @@ export default function Profile() {
 					<FiPower onClick={handleLogout} size={16} color="lightred"/>
 				</div>
 			</header>
-			<h1>Bem vindo, {user_name} {user_surname}</h1>
+			
 			<section>
 				<div className="category">
 					<h1>CATEGORIAS</h1>
@@ -76,7 +75,7 @@ export default function Profile() {
 						<li>Compras</li>
 					</ul>
 				</div>
-
+				<hr />
 				<div className="tasks">
 					<ul>
 
@@ -88,12 +87,12 @@ export default function Profile() {
 								<hr/>
 								<small>Data: {task.date}</small>
 								<div className="features-put-delete">
-									<button onClick={() => handleDeleteTask(task.id)}>
-										<FiTrash2 />	
-									</button>
-									<button onClick={() => {}}>
-										<FiEdit />
-									</button>
+									<a className="button-methods" onClick={() => handleDeleteTask(task.id)}>
+										<FiTrash2 size={20}/>	
+									</a>
+									<Link className="button-methods" to="/profile/tasks/edition">
+										<FiEdit size={20} />
+									</Link>
 								</div>
 							</li>
 						))}

@@ -5,14 +5,19 @@
 	margin:32px auto;	
 }
 
+
+
 .profile-container header {
 	display:flex;
 	align-items:center;
 }
 
-.profile-container header img{
-	height:54px;
+.profile-container header h2 {
+	border-bottom: 3px solid #777;
+}
 
+.profile-container header h2 span {
+	color:#7f7f7f;
 }
 
 .profile-container header input {
@@ -23,6 +28,11 @@
 	border:none;
 	padding:0 25px;
 	margin-left:20px;
+	border:2px solid #0f0f0f;
+}
+
+.profile-container header input:focus {
+	border:2px solid #5f5f5f;	
 }
 
 .profile-container header a {
@@ -33,7 +43,14 @@
 	justify-content:center;
 	align-items: center;
 	margin-top:0;
+	background:#2f2f2f;
+	transition:opacity 0.2s;
 }
+
+.profile-container header a:hover {
+	opacity:0.8;
+}
+
 
 .profile-container header .user {
 	margin-left:20px;
@@ -58,6 +75,10 @@
 	justify-content:space-between;
 }
 
+.profile-container section hr {
+	border:2px solid #6f6f6f;
+}
+
 .profile-container section .category h1{
 	font-size:35px;
 	color:#2f2f2f;
@@ -74,13 +95,13 @@
 	font-size: 20px;
 	font-weight:500;
 	margin-bottom:20px;
-	color:#1E1EFD;
+	color:#9f9f9f;
 	cursor:pointer;
 	transition:all 0.2s;
 }
 
 .profile-container section .category ul li:hover {
-	color:#6161FA;
+	color:#4f4f4f;
 	margin-left:3px;
 
 }
@@ -95,27 +116,33 @@
 }
 
 .profile-container section .tasks ul li {
-	background:rgba(255,255,255,0.7);
+	border:2px solid #4f4f4f;
+	background:#dfdfdf;
 	padding:10px 24px;
 	border-radius:8px;
 	position:relative;
 	width:400px;
 
 }
+	
+.tasks ul li h1 {
+	color:#0f0f0f;
+}
 
 .tasks ul li p {
 	width: 100%;
+	margin:0 auto;
 	font-size:16px;
 	padding:2px;
 	color:#3f3f3f;
 	text-align: justify;
 	text-justify:distribute;
+	
 }
 
 .tasks ul li hr {
 	margin:3px;
-	color:#f1f1f1;
-	border:1px solid #9f9f9f;
+	border:1px solid #afafaf;
 }
 
 .tasks ul li span {
@@ -141,7 +168,7 @@
 	right:20px;
 	top:10px;
 }
-.features-put-delete button {
+.features-put-delete .button-methods {
 	background:none;
 	border:0;
 	padding:2px;
@@ -150,7 +177,7 @@
 	transition:all 0.2s;
 }
 
-.features-put-delete button:hover {
+.features-put-delete .button-methods:hover {
 	filter:brightness(0.2);	
 }
 
