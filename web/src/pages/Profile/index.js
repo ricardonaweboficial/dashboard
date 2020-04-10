@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiChevronDown, FiTrash2, FiEdit, FiPower } from 'react-icons/fi';
+import { FiSearch, FiChevronDown, FiTrash2, FiEdit, FiPower } from 'react-icons/fi';
 import api from '../../services/api';
 
 import './styles.css';
 
 export default function Profile() {
 	const [ tasks, setTasks ] = useState([]);
+	const [ search, setSearch ] = useState('');
 
 	const user_id = localStorage.getItem('user_id');	
 	const user_name = localStorage.getItem('user_name');
@@ -15,18 +16,16 @@ export default function Profile() {
 	const history = useHistory();
 
 	useEffect(() => {
-		api.get('profile', {
-			headers: {
-				authorization: user_id, 
-			}
-		}).then(response => {
-			setTasks(response.data);
-		})
-	}, [user_id]);
+			api.get(`profile/${search}`, {
+				headers: {
+					authorization: user_id, 
+				}
+			}).then(response => {
+				setTasks(response.data);
+			})			
+	}, [user_id, search]);
 
 	async function handleDeleteTask(id) {
-
-
 		try {
 			await api.delete(`tasks/${id}`, {
 				headers: {
@@ -55,7 +54,11 @@ export default function Profile() {
 
 			<header>
 				<h2><span>Bem vindo,</span><br /> {user_name} {user_surname}</h2>
-				<input placeholder="Procure sua tarefa aqui pelo titulo..." />
+				<input 
+					value={search}
+					onChange={e => setSearch(e.target.value)}
+					placeholder="Procure sua tarefa aqui pelo titulo..." 
+				/>
 				<Link className="button" to="/profile/tasks/new">Cadastrar nova tarefa</Link>
 				<div className="user">
 					<div className="userProfile" />
@@ -90,7 +93,7 @@ export default function Profile() {
 									<a className="button-methods" onClick={() => handleDeleteTask(task.id)}>
 										<FiTrash2 size={20}/>	
 									</a>
-									<Link className="button-methods" to="/profile/tasks/edition">
+									<Link className="button-methods" to={`/profile/tasks/edition/${task.title}/${task.description}/${task.id}/${user_id}`}>
 										<FiEdit size={20} />
 									</Link>
 								</div>
