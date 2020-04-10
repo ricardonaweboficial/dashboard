@@ -15,7 +15,7 @@ export default function Routes() {
 				<Route path="/register" component={Register}/>
 				<Route path="/profile" exact component={Profile}/>
 				<Route path="/profile/tasks/new" component={NewTasks}/>
-				<Route path="/profile/tasks/edition" component={EditionTasks}/>
+				<Route path="/profile/tasks/edition/:title/:description/:id/:user_id" component={EditionTasks}/>
 			</Switch>
 		</BrowserRouter>
 	);
