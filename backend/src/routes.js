@@ -26,7 +26,7 @@ routes.put('/tasks/:id', TasksController.update);
 routes.delete('/tasks/:id', TasksController.destroy);
 
 //Routes of Profile for User
-routes.get('/profile/:search', ProfileController.index);
+routes.get('/profile', ProfileController.index);
 
 //Routes of Search
 routes.get('/search', SearchController.index);
