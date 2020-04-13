@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiSearch, FiChevronDown, FiTrash2, FiEdit, FiPower } from 'react-icons/fi';
+import { FiChevronDown, FiTrash2, FiEdit, FiPower, FiSearch } from 'react-icons/fi';
 import api from '../../services/api';
 
 import './styles.css';
@@ -13,17 +13,36 @@ export default function Profile() {
 	const user_name = localStorage.getItem('user_name');
 	const user_surname = localStorage.getItem('user_surname');
 
+	const [ viewAbout, setViewAbout ] = useState(false);
+
 	const history = useHistory();
 
 	useEffect(() => {
-			api.get(`profile/${search}`, {
+		api.get('/profile', {
+			headers: {
+				authorization: user_id, 
+			}
+		}).then(response => {
+			setTasks(response.data);
+		})						
+	}, [user_id]);
+
+
+	async function searchTask(e) {
+		e.preventDefault();	
+		try {
+			const response = await api.get(`profile?search=${search}` , {
 				headers: {
-					authorization: user_id, 
+					authorization: user_id
 				}
-			}).then(response => {
-				setTasks(response.data);
-			})			
-	}, [user_id, search]);
+			});
+
+			setTasks(response.data)
+			
+		} catch (err) {
+			return alert('Not exist this to-do');
+		}
+	}
 
 	async function handleDeleteTask(id) {
 		try {
@@ -47,25 +66,46 @@ export default function Profile() {
 		history.push('/');
 	}	
 
+	function displayBlock() {
+		setViewAbout(!viewAbout);
+	}
+
+	
+	function displayNone() {
+		if(viewAbout) {
+			setViewAbout(false);
+		} else {
+			return null;
+		}
+	}	
+
+
+
 	return (
 		// <span>Ver mais...</span>
 
-		<div className="profile-container">
+		<div className="profile-container" onClick={displayNone}>
 
-			<header>
+			<form onSubmit={searchTask}>
 				<h2><span>Bem vindo,</span><br /> {user_name} {user_surname}</h2>
 				<input 
 					value={search}
 					onChange={e => setSearch(e.target.value)}
-					placeholder="Procure sua tarefa aqui pelo titulo..." 
+					placeholder="Procure sua tarefa aqui pelo titulo..."
 				/>
+				<button className="buttonSearch" type="submit"><FiSearch /></button>
 				<Link className="button" to="/profile/tasks/new">Cadastrar nova tarefa</Link>
-				<div className="user">
-					<div className="userProfile" />
+				<div className="user" onClick={displayBlock}>
+					<div className="userProfile">
+						{viewAbout && (
+							<ul>
+								<li onClick={handleLogout}><FiPower size={16} color="red"/></li>
+							</ul>
+						)}
+					</div>
 					<FiChevronDown size={16} color="#0f0f0f"/>
-					<FiPower onClick={handleLogout} size={16} color="lightred"/>
 				</div>
-			</header>
+			</form>
 			
 			<section>
 				<div className="category">
