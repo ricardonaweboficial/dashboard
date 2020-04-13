@@ -7,35 +7,44 @@
 
 
 
-.profile-container header {
+.profile-container form {
 	display:flex;
 	align-items:center;
 }
 
-.profile-container header h2 {
+.profile-container form h2 {
 	border-bottom: 3px solid #777;
 }
 
-.profile-container header h2 span {
+.profile-container form h2 span {
 	color:#7f7f7f;
 }
 
-.profile-container header input {
+.profile-container form input {
 	width:40%;
 	height:54px;
 	font-size:16px;
-	border-radius:4px;
+	border-radius:8px 0 0 8px;
 	border:none;
 	padding:0 25px;
 	margin-left:20px;
 	border:2px solid #0f0f0f;
+	border-right: 0;
+	background:#fff;
 }
 
-.profile-container header input:focus {
-	border:2px solid #5f5f5f;	
+
+.profile-container form .buttonSearch {
+	height:54px;
+	width:54px;
+	border-radius:0 8px 8px 0;
+	border:2px solid #0f0f0f;
+	border-left: 0;
+	background:#fff;
+	cursor:pointer;
 }
 
-.profile-container header a {
+.profile-container form a {
 	width:280px;
 	margin-left:auto;
 	height:54px;
@@ -47,27 +56,59 @@
 	transition:opacity 0.2s;
 }
 
-.profile-container header a:hover {
+.profile-container form a:hover {
 	opacity:0.8;
 }
 
 
-.profile-container header .user {
+.profile-container form .user {
 	margin-left:20px;
 	width:100%;
 	max-width:50px;
 	display:flex;
 	align-items: center;
 	position:relative;
+	cursor:pointer;
 }
 
-.profile-container header .user .userProfile {
+.profile-container form .user .userProfile {
 	width:30px;
 	height:30px;
 	border-radius:50%;
 	background:#76D9D3;
 	margin-right:2px;
+	position:relative;
+
 }
+
+.profile-container form .user .userProfile ul {
+	position:absolute;
+	left:-32px;
+	top:40px;
+	width:120px;
+	height:150px;
+	background:#fff;
+	list-style-type:none;
+	border:1px solid #6f6f6f;
+	cursor:default;
+}
+
+.profile-container form .user .userProfile ul li {
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	width:100%;
+	border:1px solid #f1f1f1;
+	padding:5px;
+	cursor:pointer;
+}
+
+.profile-container form .user .userProfile ul li:hover {
+	border:1px solid #9f9f9f;
+	background:#f2f2f2;
+}
+
 
 .profile-container section {
 	display:flex;
