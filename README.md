@@ -1,5 +1,6 @@
+## With the knowledge acquired in the week omnistack 11, I was able to create a to-do project with login.
 
-# Dashboard Tasks with Login using ( ReactJS, NodeJS, SQLite [ Query Builder ] )
+### Dashboard Tasks with Login using ReactJS, NodeJS, SQLite -> Query Builder
 
 ## Pages
 - [x] Login
