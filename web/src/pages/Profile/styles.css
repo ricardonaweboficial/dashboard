@@ -91,6 +91,7 @@
 	list-style-type:none;
 	border:1px solid #6f6f6f;
 	cursor:default;
+	z-index:11; 
 }
 
 .profile-container form .user .userProfile ul li {
@@ -204,6 +205,22 @@
 	color:#2f2f2f;
 }
 
+.tasks #create-task {
+	height:150px;
+}
+
+.tasks #create-task p {
+	font-weight:bold;
+	font-size:18px;
+	margin-bottom:20px;	
+}
+
+.tasks #create-task a {
+	background:black;
+	padding:10px;
+	margin-top:20px;
+}
+
 .features-put-delete {
 	position:absolute;
 	right:20px;
@@ -221,6 +238,8 @@
 .features-put-delete .button-methods:hover {
 	filter:brightness(0.2);	
 }
+
+
 
 
 

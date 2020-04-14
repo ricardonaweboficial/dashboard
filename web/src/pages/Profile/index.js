@@ -37,7 +37,11 @@ export default function Profile() {
 				}
 			});
 
-			setTasks(response.data)
+			if(response) {
+				setTasks(response.data);	
+			}
+
+			return alert('Deu nada');
 			
 		} catch (err) {
 			return alert('Not exist this to-do');
@@ -68,6 +72,7 @@ export default function Profile() {
 
 	function displayBlock() {
 		setViewAbout(!viewAbout);
+		console.log(tasks)
 	}
 
 	
@@ -121,9 +126,8 @@ export default function Profile() {
 				<hr />
 				<div className="tasks">
 					<ul>
-
-						{tasks.map(task => (
-							<li key={task.id}>
+						{tasks.length !== 0 ? tasks.map(task => (
+						 	<li key={task.id}>
 								<h1>{task.title}</h1>
 								<hr/>
 								<p>{task.description}</p> 
@@ -133,12 +137,17 @@ export default function Profile() {
 									<a className="button-methods" onClick={() => handleDeleteTask(task.id)}>
 										<FiTrash2 size={20}/>	
 									</a>
-									<Link className="button-methods" to={`/profile/tasks/edition/${task.title}/${task.description}/${task.id}/${user_id}`}>
+									<Link className="button-methods" to={`/profile/tasks/edition/${task.id}`}>
 										<FiEdit size={20} />
 									</Link>
 								</div>
 							</li>
-						))}
+						)) : (
+							<li id="create-task">
+								<p>Para começar crie sua primeira tarefa clicando no botão logo abaixou ou no botão logo acima (Cadastrar nova tarefa) </p>
+								<Link className="button" to="/profile/tasks/new">Cadastrar primeira tarefa</Link>
+							</li>
+						)}
 					</ul>
 				</div>
 			</section>
