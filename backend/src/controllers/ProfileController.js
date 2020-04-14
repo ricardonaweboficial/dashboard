@@ -12,7 +12,7 @@ module.exports = {
 				.select('*');
 
 			return res.json(tasks);	
-		} else if (!search) {
+		} else {
 			const tasks = await connection('tasks')
 				.where('user_id', user_id)
 				.select('*');

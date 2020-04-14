@@ -10,10 +10,6 @@ module.exports = {
 			.join('users', 'users.id', '=', 'tasks.user_id')
 			.select([
 				'tasks.*',
-				'users.name',
-				'users.surname',
-				'users.email',
-				'users.senha',
 			]);
 
 		res.header('X-Total-Count', count['count(*)'])
@@ -23,7 +19,7 @@ module.exports = {
 	},
 
 	async store(req, res) {
-		const { title, description } = req.body;
+		const { title, description, category, background_color } = req.body;
 		const user_id = req.headers.authorization;
 	
 		const date = dateNow()
@@ -32,6 +28,7 @@ module.exports = {
 			title,
 			description,
 			date,
+			background_color,
 			user_id
 		});
 
@@ -39,9 +36,9 @@ module.exports = {
 	},
 
 	async update(req, res) {
-		const { title, description } = req.body;
+		const { title, description, background_color} = req.body;
 		const { id } = req.params;
-		const dateModify = dateNow();
+		const date = dateNow();
 
 		const user_id = req.headers.authorization;
 
@@ -54,16 +51,14 @@ module.exports = {
 			return res.status(401).json({ error: 'Operation not permitted.'})
 		}
 
-		await connection('tasks').where('id', id).update({
+		const response = await connection('tasks').where('id', id).update({
 			title,
 			description,
-			date: dateModify
+			date,
+			background_color,
 		})
 
-		return res.json({
-			title,
-			description
-		})
+		return res.json(response.data);
 	},
 
 	async destroy(req, res) {

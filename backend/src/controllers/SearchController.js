@@ -2,13 +2,14 @@ const connection = require('../database/connection');
 
 module.exports = {
 	async index(req, res) {
-		const { search } = req.body;
+		const { id } = req.query;
 		const user_id = req.headers.authorization;
 
 		const tasks = await connection('tasks')
-			.where('title', 'like', `%${search}%`)
-			.whereIn('user_id', '=', user_id)
-			.select('*');
+			.where('id', id)
+			.where('user_id', user_id)
+			.select()
+			.first();
 
 		return res.json(tasks);
 	}
