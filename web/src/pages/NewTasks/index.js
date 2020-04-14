@@ -13,6 +13,7 @@ export default function NewTasks() {
 
 	const [ title, setTitle ] = useState('');
 	const [ description, setDescription ] = useState('');
+	const [ background_color, setBackground_color ] = useState('grey');
 
 	const history = useHistory();
 
@@ -21,7 +22,8 @@ export default function NewTasks() {
 
 		const data = {
 			title,
-			description
+			description,
+			background_color
 		}
 		try {
 			await api.post('tasks', data, {
@@ -48,11 +50,21 @@ export default function NewTasks() {
 				</Link>
 			</section>
 			<form onSubmit={handleNewTask}>
-				<input 
-					value={title}
-					onChange={e => setTitle(e.target.value)}
-					placeholder="Título"/>
+				<div className="group-input-select">
+					<input 
+						required
+						value={title}
+						onChange={e => setTitle(e.target.value)}
+						placeholder="Título"/>
+					<select style={{ backgroundColor: background_color, color: background_color}} value={background_color} onChange={e => setBackground_color(e.target.value)} id="backgroundColor">
+						<option value="red">Vermelho</option>
+						<option value="grey">Cinza</option>
+						<option value="green">Verde</option>
+						<option value="blue">Azul</option>
+					</select>
+				</div>
 				<textarea 
+					required
 					value={description}
 					onChange={e => setDescription(e.target.value)}
 					placeholder="Descrição"/>
