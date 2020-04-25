@@ -13,7 +13,7 @@ export default function NewTasks() {
 
 	const [ title, setTitle ] = useState('');
 	const [ description, setDescription ] = useState('');
-	const [ background_color, setBackground_color ] = useState('grey');
+	const [ background_color, setBackground_color ] = useState('#76D9D3');
 
 	const history = useHistory();
 
@@ -42,10 +42,10 @@ export default function NewTasks() {
 		<div className="new-task-container">
 			<section>
 				<h1>Cadastrar tarefas</h1>
-				<img src={serverImage} alt="Create Task"/>
+				<img src={serverImage} alt="Create Task" />
 				<p>Crie suas tarefas para melhorar seu dia a dia.</p>				
 				<Link to="/profile" className="back-link">
-					<FiArrowLeft size={16} color='#EA3333'/>
+					<FiArrowLeft size={16} color='#EA3333' />
 					Voltar para o home
 				</Link>
 			</section>
@@ -57,10 +57,11 @@ export default function NewTasks() {
 						onChange={e => setTitle(e.target.value)}
 						placeholder="Título"/>
 					<select style={{ backgroundColor: background_color, color: background_color}} value={background_color} onChange={e => setBackground_color(e.target.value)} id="backgroundColor">
-						<option value="red">Vermelho</option>
-						<option value="grey">Cinza</option>
-						<option value="green">Verde</option>
-						<option value="blue">Azul</option>
+						<option value="#76D9D3">Ocean</option>
+						<option value="#FF9393">Vermelho</option>
+						<option value="#DDDDDD">Cinza</option>
+						<option value="#A2FF93">Verde</option>
+						<option value="#9BA1FC">Azul</option>
 					</select>
 				</div>
 				<textarea 
