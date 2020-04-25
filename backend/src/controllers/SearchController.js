@@ -12,5 +12,16 @@ module.exports = {
 			.first();
 
 		return res.json(tasks);
+	},
+
+	async show(req, res) {
+		const { id } = req.params;
+
+		const users = await connection('users')
+			.select('*')
+			.where('id', '=' , id)
+			.first();
+
+		return res.json(users);
 	}
 }
