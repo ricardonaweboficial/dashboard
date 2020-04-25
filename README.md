@@ -31,6 +31,8 @@
 
 - ### Search Tasks 
 
+- ### Background Color for Tasks
+
 - ### List Tasks 
 
 - ### Modify Tasks 
