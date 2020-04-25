@@ -11,7 +11,7 @@
 
 - [x] Register Task
 
-- [ ] Profile User
+- [x] Profile User
 
 ## Features User
 
