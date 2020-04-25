@@ -22,14 +22,13 @@ export default function Register() {
 		const response = await api.post('users_search', { email });
 
 		if(response.data.email !== email) {
+			const data = {
+				name,
+				surname,
+				email,
+				senha,
+			}
 			if(senha === replaceSenha) {
-				const data = {
-					name,
-					surname,
-					email,
-					senha,
-				}
-
 				try {
 					api.post('/users', data);
 
@@ -39,12 +38,17 @@ export default function Register() {
 				} catch (err) {
 					return alert('erro no register')
 				}
+			} else {
+
+				return alert('As senhas não são idênticas');
+
 			}
 
-			return alert('As senhas não são idênticas');
-		}
+		} else {
 
-		return alert('Este email já esta em uso');
+			return alert('Este email já esta em uso');
+
+		}
 	}
 
 
@@ -65,11 +69,13 @@ export default function Register() {
 						value={name}
 						onChange={e => setName(e.target.value)}
 						placeholder="Nome"
+						required
 					/>
 					<input 
 						value={surname}
 						onChange={e => setSurname(e.target.value)}
 						placeholder="Sobrenome"
+						required
 					/>
 				</div>
 				<input 
@@ -77,18 +83,21 @@ export default function Register() {
 					onChange={e => setEmail(e.target.value)}
 					type="email" 
 					placeholder="E-mail"
+					required
 				/>
 				<input 
 					value={senha}
 					onChange={e => setSenha(e.target.value)}
 					type="password" 
 					placeholder="Senha"
+					required
 				/>
 				<input 
 					value={replaceSenha}
 					onChange={e => setReplaceSenha(e.target.value)}
 					type="password" 
 					placeholder="Repetir senha"
+					required
 				/>
 
 				<button className="button" type="submit">Cadastrar</button>
