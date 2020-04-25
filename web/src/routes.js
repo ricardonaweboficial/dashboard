@@ -15,8 +15,8 @@ export default function Routes() {
 			<Switch>
 				<Route path="/" exact component={Logon}/>
 				<Route path="/register" component={Register}/>
-				<Route path="/profile" exact component={Profile}/>
-				<Route path="/profile/user" component={User}/>
+				<Route path="/profile/:id" exact component={Profile}/>
+				<Route path="/profile/user/:id" component={User}/>
 				<Route path="/profile/tasks/new" component={NewTasks}/>
 				<Route path="/profile/tasks/edition/:id" component={EditionTasks}/>
 
