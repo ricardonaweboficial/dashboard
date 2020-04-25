@@ -84,6 +84,10 @@ export default function Profile() {
 		}
 	}	
 
+	function handleUser() {
+		history.push('/user');
+	}
+
 
 
 	return (
@@ -104,6 +108,7 @@ export default function Profile() {
 					<div className="userProfile">
 						{viewAbout && (
 							<ul>
+								<li onClick={handleUser}>User Profile</li>
 								<li onClick={handleLogout}><FiPower size={16} color="red"/></li>
 							</ul>
 						)}
