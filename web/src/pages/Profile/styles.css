@@ -1,8 +1,8 @@
 .profile-container {
 	width:100%;
-	max-width:1180px;
-	padding:0 30px;
-	margin:32px auto;	
+	max-width:100%;
+	padding:20px 50px;
+	margin:auto;
 }
 
 .profile-container form {
@@ -84,7 +84,6 @@
 	left:-32px;
 	top:40px;
 	width:120px;
-	height:150px;
 	background:#fff;
 	list-style-type:none;
 	border:1px solid #6f6f6f;
@@ -108,61 +107,28 @@
 	background:#f2f2f2;
 }
 
-
-.profile-container section {
-	display:flex;
-	margin-top: 100px;
-	justify-content:space-between;
+.profile-container section .tasks {
+	padding:0 50px;
 }
 
-.profile-container section hr {
-	border:2px solid #6f6f6f;
-}
-
-.profile-container section .category h1{
-	font-size:35px;
-	color:#2f2f2f;
-}
-
-.profile-container section .category ul {
-	margin-top:20px;
-	width:100%;
-	max-width:200px;
-	list-style-type:none;
-}
-
-.profile-container section .category ul li {
-	font-size: 20px;
-	font-weight:500;
-	margin-bottom:20px;
-	color:#9f9f9f;
-	cursor:pointer;
-	transition:all 0.2s;
-}
-
-.profile-container section .category ul li:hover {
-	color:#4f4f4f;
-	margin-left:3px;
-
+.profile-container section .tasks #tarefas {
+	font-size:30px;
+	margin-top:50px;
+	margin-bottom: 20px;
 }
 
 .profile-container section .tasks ul{
 	list-style-type:none;
-	padding:0 20px;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-gap:24px;
-
+	grid-gap:50px;
 }
 
 .profile-container section .tasks ul li {
 	border:2px solid #4f4f4f;
-	background:#dfdfdf;
 	padding:10px 24px;
 	border-radius:8px;
 	position:relative;
-	width:400px;
-
 }
 	
 .tasks ul li h1 {
@@ -181,8 +147,8 @@
 }
 
 .tasks ul li hr {
-	margin:3px;
-	border:1px solid #afafaf;
+	margin:6px 0;
+	border:1px solid #f1f1f1;
 }
 
 .tasks ul li span {
