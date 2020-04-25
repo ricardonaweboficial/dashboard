@@ -18,11 +18,14 @@ export default function Profile() {
 
 	const [ titleModify, setTitleModify ] = useState('');
 	const [ descriptionModify, setDescriptionModify ] = useState('');
+	const [ background_color_modify, setBackground_color_modify ] = useState('');
+
 
 	const [ view, setView ] = useState(false);
 
 	useEffect(() => {
 		async function loadModifyTask() {
+
 			try {
 				const response = await api.get(`/search?id=${id}`, {
 					headers: {
@@ -31,7 +34,9 @@ export default function Profile() {
 				});
 
 				setTask(response.data);
-
+				setTitleModify(response.data.title);
+				setDescriptionModify(response.data.description);
+				setBackground_color_modify(response.data.background_color);
 				setView(true);
 
 			} catch (err) {
@@ -39,7 +44,10 @@ export default function Profile() {
 			}
 		}
 		loadModifyTask();
-	}, []);
+		
+	}, [user_id, id]);
+
+	
  
 	async function handleEdition(e) {
 		e.preventDefault();
@@ -47,7 +55,8 @@ export default function Profile() {
 		try {
 			const data = {
 				title: titleModify,
-				description: descriptionModify
+				description: descriptionModify,
+				background_color: background_color_modify
 			}
 			await api.put(`tasks/${id}`,data, {
 				headers: {
@@ -63,30 +72,28 @@ export default function Profile() {
 	}
 
 	function test() {
-		console.log(background_color_modify)
+		console.log(task.background_color)
 	}
-
 	return (
 		<div className="edition-container">
-			<button onClick={test}>D</button>
 			{view === true ? (
 				<form onSubmit={handleEdition}>
 					<div className="group-input-select">
 						<input 
-							value={task.title}
+							value={titleModify}
 							onChange={e => setTitleModify(e.target.value)}
 							placeholder="Título"
 							required
 						/>
-						<select>
-							<option value="red">Vermelho</option>
-							<option value="grey">Cinza</option>
-							<option value="green">Verde</option>
-							<option value="blue">Azul</option>
+						<select style={{ backgroundColor: background_color_modify, color: background_color_modify}} value={background_color_modify} onChange={e => setBackground_color_modify(e.target.value)}>
+							<option value="#FF9393">Vermelho</option>
+							<option value="#DDDDDD">Cinza</option>
+							<option value="#A2FF93">Verde</option>
+							<option value="#9BA1FC">Azul</option>
 						</select>
 					</div>
 					<textarea 
-						value={task.description}
+						value={descriptionModify}
 						onChange={e => setDescriptionModify(e.target.value)}
 						placeholder="Descrição"
 						required
@@ -99,9 +106,9 @@ export default function Profile() {
 				<h1>Edição de tarefa</h1>
 				<img src={notebookImage} alt="Notebook Task"/>
 				<p>Edite algum erro ou aumente sua tarefa.</p>				
-				<Link to="/" className="back-link">
+				<Link to="/profile" className="back-link">
 					<FiArrowLeft size={16} color='#76D9D3'/>
-					Voltar para o login
+					Voltar para a home
 				</Link>
 			</section>
 		</div>
