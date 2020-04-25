@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { FiChevronDown, FiTrash2, FiEdit, FiPower, FiSearch } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -10,12 +10,25 @@ export default function Profile() {
 	const [ search, setSearch ] = useState('');
 
 	const user_id = localStorage.getItem('user_id');	
-	const user_name = localStorage.getItem('user_name');
-	const user_surname = localStorage.getItem('user_surname');
+	const [ user_name, setUser_name ] = useState('');
+	const [ user_surname, setUser_surname ] = useState('');
 
 	const [ viewAbout, setViewAbout ] = useState(false);
 
 	const history = useHistory();
+
+	const { id } = useParams();
+
+	useEffect(() => {
+		async function loadNameAndSurname() {
+			const response = await api.get(`/search_user/${id}`);
+
+			setUser_name(response.data.name);
+			setUser_surname(response.data.surname);
+		}
+
+		loadNameAndSurname();
+	}, [id]);
 
 	useEffect(() => {
 		api.get('/profile', {
@@ -39,9 +52,11 @@ export default function Profile() {
 
 			if(response) {
 				setTasks(response.data);	
+			} else {
+				return alert('Deu nada');	
 			}
 
-			return alert('Deu nada');
+			
 			
 		} catch (err) {
 			return alert('Not exist this to-do');
@@ -85,7 +100,7 @@ export default function Profile() {
 	}	
 
 	function handleUser() {
-		history.push('/user');
+		history.push(`/profile/user/${user_id}`);
 	}
 
 
@@ -118,21 +133,11 @@ export default function Profile() {
 			</form>
 			
 			<section>
-				<div className="category">
-					<h1>CATEGORIAS</h1>
-					<ul>
-						<li>Dia a dia</li>
-						<li>Trabalhos</li>
-						<li>Lições</li>
-						<li>Listas</li>
-						<li>Compras</li>
-					</ul>
-				</div>
-				<hr />
 				<div className="tasks">
+					<h1 id="tarefas">Tarefas Cadastradas</h1>
 					<ul>
 						{tasks.length !== 0 ? tasks.map(task => (
-						 	<li key={task.id}>
+						 	<li key={task.id} style={{ backgroundColor: task.background_color }}>
 								<h1>{task.title}</h1>
 								<hr/>
 								<p>{task.description}</p> 
