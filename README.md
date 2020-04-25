@@ -11,7 +11,7 @@
 
 - [x] Register Task
 
-- [ ] Profile User
+- [x] Profile User
 
 ## Features User
 
@@ -30,6 +30,8 @@
 - ### Create Tasks
 
 - ### Search Tasks 
+
+- ### Background Color for Tasks
 
 - ### List Tasks 
 
