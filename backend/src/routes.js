@@ -30,5 +30,6 @@ routes.get('/profile', ProfileController.index);
 
 //Routes of Search
 routes.get('/search', SearchController.index);
+routes.get('/search_user/:id', SearchController.show);
 
 module.exports = routes;
