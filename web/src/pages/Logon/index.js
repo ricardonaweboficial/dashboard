@@ -20,10 +20,8 @@ function Logon() {
 			const response = await api.post('/session', { email, senha });
 
 			localStorage.setItem('user_id', response.data.id);
-			localStorage.setItem('user_name', response.data.name);
-			localStorage.setItem('user_surname', response.data.surname);
 
-			history.push('/profile')
+			history.push(`/profile/${response.data.id}`)
 
 		} catch (err) {
 			alert('Este email não existe.');
