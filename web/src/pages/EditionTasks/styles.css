@@ -21,7 +21,6 @@
 .edition-container section h1 {
 	font-weight: 700;
 	font-size: 46px;
-	
 }
 
 .edition-container section img {
@@ -31,12 +30,10 @@
 }
 
 .edition-container section p {
-
 	margin-top:20px;
 	font-weight: 400;
 	font-size: 18px;
 	color: #5B5B5B;
-
 }
 
 .edition-container form {
